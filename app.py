@@ -5,15 +5,12 @@ import streamlit as st
 from fastai.vision.all import *
 from fastai.vision.widgets import *
 
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
-
 learn_inf = load_learner('model.pkl')
 
 class Predict:
     def __init__(self, filename):
         self.learn_inference = load_learner(Path()/filename)
-        self.img = self.get_image_from_upload()
+        self.img = self.get_image_from_upload() 
         if self.img is not None:
             self.display_output()
             self.get_prediction()
